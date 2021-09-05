@@ -14,6 +14,16 @@ namespace BookStoreDemo.DataAccess
         }
 
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Book_ImportNote> Books_ImportNotes { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<ImportNote> ImportNotes { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Receipt_Book> Receipts_Books { get; set; }
+        public DbSet<Receipt_Coupon> Receipts_Coupons { get; set; }
+        public DbSet<Storage> Storages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,5 +35,7 @@ namespace BookStoreDemo.DataAccess
             ChangeTracker.DetectChanges();
             return base.SaveChanges();
         }
+
+        //public DbSet<BookStoreDemo.Models.Book> Book { get; set; }
     }
 }
