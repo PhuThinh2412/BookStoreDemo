@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BookStoreDemo.Models;
+using BookStoreDemo.Models.Views;
 
 namespace BookStoreDemo.DataAccess
 {
@@ -24,6 +25,7 @@ namespace BookStoreDemo.DataAccess
         public DbSet<Receipt_Book> Receipts_Books { get; set; }
         public DbSet<Receipt_Coupon> Receipts_Coupons { get; set; }
         public DbSet<Storage> Storages { get; set; }
+        public DbSet<V_Books> V_Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
