@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using BookStoreDemo.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace BookStoreDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            var sqlConnectionString = "Server=localhost;Port=5432;Database=bookstore;User Id=postgres;Password=admin;";
+
+            services.AddDbContext<PostgreSqlContext>(options => options.UseNpgsql(sqlConnectionString));
+
+            services.AddScoped<IDataAccessProvider, DataAccessProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
