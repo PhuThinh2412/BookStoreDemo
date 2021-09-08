@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BookStoreDemo.Models.Views.V_RevenueOnBook>
+
+@{
+    ViewData["Title"] = "Tổng kết doanh thu mỗi mặt sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tổng kết doanh thu mỗi mặt sách</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Sách
+            </th>
+            <th>
+                Tên Sách
+            </th>
+            <th>
+                Đơn Giá
+            </th>
+            <th>
+                Tổng số bán ra 
+            </th>
+            <th>
+                Doanh Thu Mỗi Sách
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tongsobanra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doanhthu)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID">Chi Tiết</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

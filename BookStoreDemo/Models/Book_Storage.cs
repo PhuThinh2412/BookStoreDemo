@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace BookStoreDemo.Models
 {
-    public class Storage
+    public class Book_Storage
     {
         public int ID { get; set; }
-        public string MaKho { get; set; }
-        public string TenKho { get; set; }
-        public string DiaChiKho { get; set; }
+        public int ID_Kho { get; set; }
+        public int ID_Sach { get; set; }
+        public int SoLuongTon { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace BookStoreDemo.Models
         public int ID { get; set; }
         public int ID_Receipt { get; set; }
         public int ID_Book { get; set; }
-        public Double ThanhTien { get; set; }
+        public int Soluongban { get; set; }
     }
 }

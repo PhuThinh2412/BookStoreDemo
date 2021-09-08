@@ -10,7 +10,7 @@ namespace BookStoreDemo.Models
         public int ID { get; set; }
         public string MaPhieu { get; set; }
         public string SoLuongNhap { get; set; }
-        public DateTime NgayNhap { get; set; }
+        public double GiaNhap { get; set; }
         public int ID_Storage { get; set; }
     }
 }

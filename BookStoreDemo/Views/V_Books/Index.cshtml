@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Danh mục các cuốn sách</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -32,29 +29,42 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenSach)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonGia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenTacGia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenNXB)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @{var stringids = ""; var count = 0; double tongtien = 0; }
+        @foreach (var item in Model)
+        {
+            count++;
+            tongtien += item.DonGia * item.ID;
+            if (count < Model.ToList().Count)
+            {
+                stringids += item.ID + ",";
+                
+            }
+            else
+            {
+                stringids += item.ID;
+              }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTacGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNXB)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>|
+                    <a asp-action="BuyOne" asp-route-idbook="@item.ID">Bye One</a>
+                </td>
+            </tr>
+        }
+        <a asp-action="BuyAll" asp-route-buyingList="@stringids" asp-route-tongtien="@tongtien">Bye All</a>
     </tbody>
 </table>

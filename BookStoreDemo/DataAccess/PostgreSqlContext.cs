@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BookStoreDemo.Models;
 using BookStoreDemo.Models.Views;
+using BookStoreDemo.Models.Funcs;
 
 namespace BookStoreDemo.DataAccess
 {
@@ -26,6 +27,8 @@ namespace BookStoreDemo.DataAccess
         public DbSet<Receipt_Coupon> Receipts_Coupons { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<V_Books> V_Books { get; set; }
+        public DbSet<V_RevenueOnBook> V_RevenueOnEachBook { get; set; }
+        public DbSet<RevenueEachBookByTime> RevenueEachBookByTime { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

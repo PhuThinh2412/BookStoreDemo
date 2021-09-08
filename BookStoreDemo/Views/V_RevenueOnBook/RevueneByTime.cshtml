@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BookStoreDemo.Models.Funcs.RevenueEachBookByTime>
+
+@{
+    ViewData["Title"] = "RevueneByTime";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Doanh thu sách trong một năm</h1>
+<a asp-action="RevueneByTime" asp-route-time="2021-09-01">Doanh thu trong tháng</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã Sách
+            </th>
+            <th>
+                Tên Sách
+            </th>
+            <th>
+                Đơn giá
+            </th>
+            <th>
+                Tổng số bán ra
+            </th>
+            <th>
+                Doanh Thu
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.masach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tensach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tongsobanra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doanhthu)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
